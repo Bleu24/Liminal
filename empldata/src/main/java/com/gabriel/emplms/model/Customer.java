@@ -4,6 +4,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
+
 public class Customer {
     private int id;
     private int age;
@@ -13,8 +14,6 @@ public class Customer {
     private String email;
     private String phoneNumber;
     private String address;
-    private String customerType;
-    private String status;
+    private String password;
     private Date dateOfBirth;
-
 }

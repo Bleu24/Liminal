@@ -95,4 +95,20 @@ public class CustomerController {
         }
         return response;
     }
+
+    // @PostMapping("/api/register")
+    // public ResponseEntity<?> registerCustomer(@RequestBody CustomerSignUpDTO customerSignUpDTO) {
+    //     logger.info("Register Input >> " + customerSignUpDTO.toString());
+    //     HttpHeaders headers = new HttpHeaders();
+    //     ResponseEntity<?> response;
+    //     try {
+    //         // Call the service to register the customer
+    //         CustomerData newCustomer = customerService.register(customerSignUpDTO);
+    //         response = ResponseEntity.ok(newCustomer);
+    //     } catch (Exception ex) {
+    //         logger.error("Failed to register customer: {}", ex.getMessage(), ex);
+    //         response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+    //     }
+    //     return response;
+    // }
 }

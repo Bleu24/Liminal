@@ -1,12 +1,19 @@
 package com.gabriel.emplms.transform;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.gabriel.emplms.dto.CustomerSignUpDTO;
 import com.gabriel.emplms.entity.CustomerData;
 import com.gabriel.emplms.model.Customer;
 
 @Service
 public class TransformCustomerServiceImpl implements TransformCustomerService {
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+    
     @Override
     public CustomerData transform(Customer customer) {
         CustomerData customerData = new CustomerData();
@@ -18,9 +25,8 @@ public class TransformCustomerServiceImpl implements TransformCustomerService {
         customerData.setEmail(customer.getEmail());
         customerData.setPhoneNumber(customer.getPhoneNumber());
         customerData.setAddress(customer.getAddress());
-        customerData.setCustomerType(customer.getCustomerType());
-        customerData.setStatus(customer.getStatus());
         customerData.setDateOfBirth(customer.getDateOfBirth());
+        customerData.setPassword(customer.getPassword());
         return customerData;
     }
 
@@ -35,9 +41,15 @@ public class TransformCustomerServiceImpl implements TransformCustomerService {
         customer.setEmail(customerData.getEmail());
         customer.setPhoneNumber(customerData.getPhoneNumber());
         customer.setAddress(customerData.getAddress());
-        customer.setCustomerType(customerData.getCustomerType());
-        customer.setStatus(customerData.getStatus());
         customer.setDateOfBirth(customerData.getDateOfBirth());
         return customer;
+    }
+
+    @Override
+    public CustomerData transform(CustomerSignUpDTO customerSignUpDTO) {
+        CustomerData customerData = new CustomerData();
+        customerData.setEmail(customerSignUpDTO.getEmail());
+        customerData.setPassword(passwordEncoder.encode(customerSignUpDTO.getPassword())); // Hash the password
+        return customerData;
     }
 }
