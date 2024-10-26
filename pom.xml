@@ -19,6 +19,7 @@
 
     <!-- Modules -->
     <modules>
+        <module>common</module>
         <module>empldata</module>
         <module>sbemplms</module>
     </modules>

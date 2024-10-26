@@ -14,12 +14,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gabriel.emplms.entity.CustomerData;
 import com.gabriel.emplms.model.Customer;
 import com.gabriel.emplms.service.CustomerService;
+import com.reamillo.dto.CustomerSignUpDTO;
+
 
 @RestController
 public class CustomerController {
     Logger logger = LoggerFactory.getLogger(CustomerController.class);
+
 
     @Autowired
     private CustomerService customerService;
@@ -96,19 +100,19 @@ public class CustomerController {
         return response;
     }
 
-    // @PostMapping("/api/register")
-    // public ResponseEntity<?> registerCustomer(@RequestBody CustomerSignUpDTO customerSignUpDTO) {
-    //     logger.info("Register Input >> " + customerSignUpDTO.toString());
-    //     HttpHeaders headers = new HttpHeaders();
-    //     ResponseEntity<?> response;
-    //     try {
-    //         // Call the service to register the customer
-    //         CustomerData newCustomer = customerService.register(customerSignUpDTO);
-    //         response = ResponseEntity.ok(newCustomer);
-    //     } catch (Exception ex) {
-    //         logger.error("Failed to register customer: {}", ex.getMessage(), ex);
-    //         response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
-    //     }
-    //     return response;
-    // }
+    @PostMapping("/api/register")
+    public ResponseEntity<?> registerCustomer(@RequestBody CustomerSignUpDTO customerSignUpDTO) {
+        logger.info("Register Input >> " + customerSignUpDTO.toString());
+        HttpHeaders headers = new HttpHeaders();
+        ResponseEntity<?> response;
+        try {
+            // Call the service to register the customer
+            CustomerData newCustomer = customerService.register(customerSignUpDTO);
+            response = ResponseEntity.ok(newCustomer);
+        } catch (Exception ex) {
+            logger.error("Failed to register customer: {}", ex.getMessage(), ex);
+            response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+        }
+        return response;
+    }
 }

@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.gabriel.emplms.dto.CustomerSignUpDTO;
 import com.gabriel.emplms.entity.CustomerData;
 import com.gabriel.emplms.model.Customer;
+import com.reamillo.dto.CustomerSignUpDTO;
 
 @Service
 public class TransformCustomerServiceImpl implements TransformCustomerService {

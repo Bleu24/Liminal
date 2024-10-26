@@ -1,5 +1,6 @@
+com\gabriel\emplms\serviceimpl\ProductServiceImpl.class
+com\gabriel\emplms\controller\ProductController.class
+com\gabriel\emplms\LiminalApp.class
 com\gabriel\emplms\serviceimpl\CustomerServiceImpl.class
 com\gabriel\emplms\controller\CustomerController.class
-com\gabriel\emplms\LiminalApp.class
-com\gabriel\emplms\config\WebConfig$1.class
-com\gabriel\emplms\config\WebConfig.class
+com\gabriel\emplms\serviceimpl\CartServiceImpl.class

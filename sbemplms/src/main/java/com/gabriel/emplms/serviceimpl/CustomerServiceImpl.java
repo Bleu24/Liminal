@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.gabriel.emplms.entity.CustomerData;
@@ -15,6 +16,7 @@ import com.gabriel.emplms.model.Customer;
 import com.gabriel.emplms.repository.CustomerDataRepository;
 import com.gabriel.emplms.service.CustomerService;
 import com.gabriel.emplms.transform.TransformCustomerService;
+import com.reamillo.dto.CustomerSignUpDTO;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -25,6 +27,10 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     TransformCustomerService transformerCustomerService;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
 
     @Override
     public Customer[] getAll() {
@@ -88,4 +94,21 @@ public class CustomerServiceImpl implements CustomerService {
             logger.info(" Failed >> unable to locate customer id:" + Integer.toString(id));
         }
     }
+
+    @Override
+    public CustomerData register(CustomerSignUpDTO customerSignUpDTO) {
+        // Validate and process the data
+        if (!customerSignUpDTO.getPassword().equals(customerSignUpDTO.getRetypedPassword())) {
+            throw new IllegalArgumentException("Passwords do not match");
+        }
+
+        // Create a new CustomerData entity
+        CustomerData customerData = new CustomerData();
+        customerData.setEmail(customerSignUpDTO.getEmail());
+        customerData.setPassword(passwordEncoder.encode(customerSignUpDTO.getPassword()));
+
+        // Save the customer entity to the database
+        return customerDataRepository.save(customerData);
+    }
+
 }
