@@ -17,7 +17,6 @@ public class TransformProductServiceImpl implements TransformProductService {
         productData.setTotalPrice(product.getTotalPrice());
         productData.setStock(product.getStock());
         productData.setQuantity(product.getQuantity());
-        productData.setCartData(product.getCartData());
         return productData;
     }
 
@@ -30,7 +29,6 @@ public class TransformProductServiceImpl implements TransformProductService {
         product.setTotalPrice(productData.getTotalPrice());
         product.setStock(productData.getStock());
         product.setQuantity(productData.getQuantity());
-        product.setCartData(productData.getCartData());
         return product;
     }
 }

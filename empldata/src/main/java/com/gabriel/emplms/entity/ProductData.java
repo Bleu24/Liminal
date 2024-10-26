@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,10 +30,6 @@ public class ProductData {
     private double totalPrice;
     private int stock;
     private int quantity;
-
-    @ManyToOne
-    @JoinColumn(name = "cart_id")
-    private CartData cartData;  
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)

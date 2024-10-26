@@ -10,7 +10,6 @@ public class TransformCartServiceImpl implements TransformCartService {
         CartData cartData = new CartData();
         cartData.setId(cart.getId());
         cartData.setName(cart.getName());
-        cartData.setProducts(cart.getProducts());
         cartData.setDescription(cart.getDescription());
         cartData.setTotalPrice(cart.getTotalPrice());
         cartData.setQuantity(cart.getQuantity());
@@ -22,7 +21,6 @@ public class TransformCartServiceImpl implements TransformCartService {
         Cart cart = new Cart();
         cart.setId(cartData.getId());
         cart.setName(cartData.getName());
-        cart.setProducts(cartData.getProducts());
         cart.setDescription(cartData.getDescription());
         cart.setTotalPrice(cartData.getTotalPrice());
         cart.setQuantity(cartData.getQuantity());

@@ -1,5 +1,5 @@
 package com.gabriel.emplms.repository;
 import org.springframework.data.repository.CrudRepository;
 
-import com.gabriel.emplms.entity.CustomerData;
-public interface CartDataRepository extends CrudRepository<CustomerData,Integer> {}
+import com.gabriel.emplms.entity.CartData;
+public interface CartDataRepository extends CrudRepository<CartData,Integer> {}

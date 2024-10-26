@@ -19,7 +19,7 @@ public class SecurityConfig {
         http.csrf().disable() // Disable CSRF for testing purposes
             .cors().and() // Enable CORS
             .authorizeRequests()
-            .antMatchers("/api/product/**", "/api/register/**", "/api/customer/**").permitAll() // Allow access to all sub-paths
+            .antMatchers("/api/product/**", "/api/register/**", "/api/customer/**", "/api/cart/**").permitAll() // Allow access to all sub-paths
             .anyRequest().authenticated(); // Secure all other endpoints
 
         return http.build();

@@ -1,13 +1,12 @@
 package com.gabriel.emplms.entity;
 
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,7 +14,6 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.gabriel.emplms.model.Product;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,8 +31,9 @@ public class CartData {
     private String name;
 
     // Represents a list of products associated with this cart
-    @OneToMany(mappedBy = "cartData") // `cartData` is the field name in `Product` that owns the relationship
-    private List<ProductData> products;
+    @Column(name = "product_id")
+    private int productId;
+    
     private String description;
     private int quantity;
     private double totalPrice;

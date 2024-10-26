@@ -3,4 +3,5 @@ com\gabriel\emplms\controller\ProductController.class
 com\gabriel\emplms\LiminalApp.class
 com\gabriel\emplms\serviceimpl\CustomerServiceImpl.class
 com\gabriel\emplms\controller\CustomerController.class
+com\gabriel\emplms\controller\CartController.class
 com\gabriel\emplms\serviceimpl\CartServiceImpl.class
