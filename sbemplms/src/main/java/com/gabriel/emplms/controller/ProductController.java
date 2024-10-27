@@ -28,7 +28,7 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/api/product")
-    public ResponseEntity<?> listCustomer() {
+    public ResponseEntity<?> listProduct() {
         HttpHeaders headers = new HttpHeaders();
         ResponseEntity<?> response;
         try {

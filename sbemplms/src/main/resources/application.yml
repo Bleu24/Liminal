@@ -4,10 +4,11 @@ server:
 spring: 
    datasource: 
       url: jdbc:mysql://localhost:3306/liminaldb?allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true&useSSL=false
-      username: root
-      password: Jul@2022105075
+      username: root # change accordingly
+      password: Jul@2022105075 # change accordingly
       driver-class-name: com.mysql.cj.jdbc.Driver
    jpa: 
+      defer-datasource-initialization: true
       show-sql: true
       properties: 
          hibernate: 
@@ -17,6 +18,9 @@ spring:
             implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
             physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
          ddl-auto: create
+   sql:
+    init:
+      mode: always
    servlet: 
       multipart: 
          enabled: true
