@@ -31,6 +31,14 @@ spring:
       multipart: 
          enabled: true
          location: upload
+
+   # security:
+   #    jwt:
+   #       secret: JdSzro2n0UiXTMMVyqKBLtSDA6dDksWQqGx7D9nwtyA=
+   #       expiration: 
+   #          hours: 8
+   #       issuer: "Liminal"
+
 file: 
    upload: 
       location: ..\\upload-dir

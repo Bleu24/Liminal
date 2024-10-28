@@ -16,6 +16,7 @@ import com.gabriel.emplms.model.Customer;
 import com.gabriel.emplms.repository.CustomerDataRepository;
 import com.gabriel.emplms.service.CustomerService;
 import com.gabriel.emplms.transform.TransformCustomerService;
+import com.reamillo.dto.CustomerLoginDTO;
 import com.reamillo.dto.CustomerSignUpDTO;
 
 @Service
@@ -105,10 +106,34 @@ public class CustomerServiceImpl implements CustomerService {
         // Create a new CustomerData entity
         CustomerData customerData = new CustomerData();
         customerData.setEmail(customerSignUpDTO.getEmail());
+        customerData.setUsername(customerSignUpDTO.getUsername());
         customerData.setPassword(passwordEncoder.encode(customerSignUpDTO.getPassword()));
 
         // Save the customer entity to the database
         return customerDataRepository.save(customerData);
     }
 
+    @Override
+    public CustomerData authenticate(CustomerLoginDTO customerLoginDTO) {
+    // Find the customer by email or username
+    Optional<CustomerData> optionalCustomer = customerDataRepository.findByEmailOrUsername(
+        customerLoginDTO.getEmailOrUsername()
+    );
+
+    // Check if the customer exists
+    if (optionalCustomer.isEmpty()) {
+        throw new IllegalArgumentException("User not found");
+    }
+
+    CustomerData customerData = optionalCustomer.get();
+
+    // Verify the password
+    if (!passwordEncoder.matches(customerLoginDTO.getPassword(), customerData.getPassword())) {
+        throw new IllegalArgumentException("Invalid credentials");
+    }
+
+    return customerData;
+    }
+
+    
 }

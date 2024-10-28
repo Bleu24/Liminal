@@ -1,5 +1,10 @@
 package com.gabriel.emplms.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gabriel.emplms.entity.CustomerData;
 import com.gabriel.emplms.model.Customer;
 import com.gabriel.emplms.service.CustomerService;
+import com.reamillo.dto.CustomerLoginDTO;
 import com.reamillo.dto.CustomerSignUpDTO;
 
 
@@ -115,4 +121,29 @@ public class CustomerController {
         }
         return response;
     }
+
+    // @PostMapping("/api/login")
+    // public ResponseEntity<?> loginCustomer(@Valid @RequestBody CustomerLoginDTO customerLoginDTO) {
+    //     logger.info("Login Input >> " + customerLoginDTO.toString());
+    //     ResponseEntity<?> response;
+    //     try {
+    //         // Authenticate the customer
+    //         CustomerData customer = customerService.authenticate(customerLoginDTO);
+
+    //         // Generate JWT token
+    //         String token = jwtTokenProvider.generateToken(customer);
+
+    //         // Return response with token and user details
+    //         Map<String, Object> responseBody = new HashMap<>();
+    //         responseBody.put("message", "Login successful");
+    //         responseBody.put("token", token);
+    //         responseBody.put("username", customer.getUsername());
+
+    //         response = ResponseEntity.ok(responseBody);
+    //     } catch (Exception ex) {
+    //         logger.error("Failed to authenticate customer: {}", ex.getMessage(), ex);
+    //         response = ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+    //     }
+    //     return response;
+    // }
 }
