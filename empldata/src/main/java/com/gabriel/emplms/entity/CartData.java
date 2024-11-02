@@ -1,5 +1,6 @@
 package com.gabriel.emplms.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -33,10 +34,14 @@ public class CartData {
     // Represents a list of products associated with this cart
     @Column(name = "product_id")
     private int productId;
-    
+    private String username;
     private String description;
+    
+    @Column(precision = 10, scale = 2)
+    private BigDecimal pricePerItem;
+    @Column(precision = 10, scale = 2)
+    private BigDecimal totalPrice;
     private int quantity;
-    private double totalPrice;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)

@@ -1,7 +1,15 @@
 com\gabriel\emplms\serviceimpl\ProductServiceImpl.class
 com\gabriel\emplms\controller\ProductController.class
+com\gabriel\emplms\controller\GlobalExceptionHandler.class
+com\gabriel\emplms\controller\AuthenticationController.class
+com\gabriel\emplms\serviceimpl\AuthenticationService.class
+com\gabriel\emplms\controller\CartController.class
+com\gabriel\emplms\config\ApplicationConfiguration.class
+com\gabriel\emplms\serviceimpl\JwtService.class
 com\gabriel\emplms\LiminalApp.class
+com\gabriel\emplms\controller\Errors.class
 com\gabriel\emplms\serviceimpl\CustomerServiceImpl.class
 com\gabriel\emplms\controller\CustomerController.class
-com\gabriel\emplms\controller\CartController.class
+com\gabriel\emplms\config\JwtAuthenticationFilter.class
+com\gabriel\emplms\config\JwtSecurityConfig.class
 com\gabriel\emplms\serviceimpl\CartServiceImpl.class

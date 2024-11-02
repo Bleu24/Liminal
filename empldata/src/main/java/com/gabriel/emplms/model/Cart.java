@@ -1,7 +1,8 @@
 package com.gabriel.emplms.model;
-import java.util.List;
 
-import com.gabriel.emplms.entity.ProductData;
+
+
+import java.math.BigDecimal;
 
 import lombok.Data;
 
@@ -10,8 +11,11 @@ import lombok.Data;
 public class Cart {
     private int id;
     private String name;
-    private List<ProductData> products;
+    
+    private int productId;
+    private String username;
     private String description;
-    private double totalPrice;
+    private BigDecimal pricePerItem;
+    private BigDecimal totalPrice;
     private int quantity;  
 }

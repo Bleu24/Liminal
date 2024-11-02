@@ -2,6 +2,7 @@ package com.gabriel.emplms.service;
 
 import com.gabriel.emplms.entity.CustomerData;
 import com.gabriel.emplms.model.Customer;
+import com.reamillo.dto.CustomerLoginDTO;
 import com.reamillo.dto.CustomerSignUpDTO;
 
 public interface CustomerService {
@@ -11,4 +12,5 @@ public interface CustomerService {
 	Customer update(Customer customer) throws Exception; //profile edit
 	void delete(Integer id) throws Exception;
 	CustomerData register(CustomerSignUpDTO customerSignUpDTO) throws Exception;
+	CustomerData authenticate(CustomerLoginDTO customerLoginDTO) throws Exception;
 }

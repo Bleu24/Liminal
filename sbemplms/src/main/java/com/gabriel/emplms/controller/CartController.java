@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +23,7 @@ import com.gabriel.emplms.entity.CartData;
 import com.gabriel.emplms.model.Cart;
 import com.gabriel.emplms.service.CartService;
 
+
 @RestController
 @RequestMapping("/api/cart")
 public class CartController {
@@ -30,15 +33,23 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
+     // Utility method to get the logged-in username
+    private String getLoggedInUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName(); // Gets the username from the security context
+    }
+
     @PostMapping("/add")
     public ResponseEntity<?> addToCart(@RequestBody Cart cart) {
+        String username = getLoggedInUsername();
         logger.info("Input >> " + cart.toString());
         HttpHeaders headers = new HttpHeaders();
         ResponseEntity<?> response;
 
         try {
-            CartData newCartItem = cartService.addToCart(cart.getProductId(), cart.getQuantity());
+            CartData newCartItem = cartService.addToCart(username, cart.getProductId(), cart.getQuantity());
             logger.info("Added to cart >> " + newCartItem.toString());
+            cartService.saveCartItems(username);
             response = ResponseEntity.ok(newCartItem);
         } catch (Exception ex) {
             logger.error("Failed to add item to cart: {}", ex.getMessage(), ex);
@@ -51,18 +62,20 @@ public class CartController {
     // Retrieve all items in the cart
     @GetMapping("/items")
     public ResponseEntity<List<CartData>> getCartItems() {
-        List<CartData> cartItems = cartService.getAllCartItems();
+        String username = getLoggedInUsername();
+        List<CartData> cartItems = cartService.getAllCartItems(username);
         return ResponseEntity.ok(cartItems);
     }
 
     @PutMapping("/update")
     public ResponseEntity<?> updateCartItem(@RequestBody Cart cart) {
+        String username = getLoggedInUsername();
         logger.info("Input >> " + cart.toString());
         HttpHeaders headers = new HttpHeaders();
         ResponseEntity<?> response;
     
         try {
-            CartData updatedItem = cartService.updateCartItem(cart.getProductId(), cart.getQuantity());
+            CartData updatedItem = cartService.updateCartItem(username, cart.getProductId(), cart.getQuantity());
             logger.info("Updated cart item >> " + updatedItem.toString());
             response = ResponseEntity.ok(updatedItem);
         } catch (Exception ex) {
@@ -72,15 +85,13 @@ public class CartController {
     
         return response;
     }
-    
-     
 
     // Remove a specific item from the cart
     @DeleteMapping("/remove/{id}")
     public ResponseEntity<Void> removeFromCart(@PathVariable int id) {
-        cartService.removeCartItem(id);
+        String username = getLoggedInUsername();
+        cartService.removeCartItem(username, id);
         return ResponseEntity.noContent().build();
     }
-
 
 }

@@ -32,12 +32,12 @@ spring:
          enabled: true
          location: upload
 
-   # security:
-   #    jwt:
-   #       secret: JdSzro2n0UiXTMMVyqKBLtSDA6dDksWQqGx7D9nwtyA=
-   #       expiration: 
-   #          hours: 8
-   #       issuer: "Liminal"
+security:
+  jwt:
+    secret-key: 3Pwf1gF6Rv/YtME2JsXrbxxnf9DBHk5JIhMKu8QEubY=
+    expiration-time: 3600000  # 1 hour in milliseconds
+
+
 
 file: 
    upload: 

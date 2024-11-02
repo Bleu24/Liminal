@@ -1,5 +1,6 @@
 package com.gabriel.emplms.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -22,14 +23,15 @@ import lombok.Data;
 @Table(name = "product_data")
 public class ProductData {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private int id;
+    private String username;
     private String name;
     private String description;
-    private double totalPrice;
+    
+    private BigDecimal pricePerItem;
     private int stock;
-    private int quantity;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)

@@ -12,11 +12,11 @@ public class TransformProductServiceImpl implements TransformProductService {
     public ProductData transform(Product product) {
         ProductData productData = new ProductData();
         productData.setId(product.getId());
+        productData.setUsername(product.getUsername());
         productData.setName(product.getName());
         productData.setDescription(product.getDescription());
-        productData.setTotalPrice(product.getTotalPrice());
+        productData.setPricePerItem(product.getPricePerItem());
         productData.setStock(product.getStock());
-        productData.setQuantity(product.getQuantity());
         return productData;
     }
 
@@ -24,11 +24,11 @@ public class TransformProductServiceImpl implements TransformProductService {
     public Product transform(ProductData productData) {
         Product product = new Product();
         product.setId(productData.getId());
+        product.setUsername(productData.getUsername());
         product.setName(productData.getName());
         product.setDescription(productData.getDescription());
-        product.setTotalPrice(productData.getTotalPrice());
+        product.setPricePerItem(productData.getPricePerItem());
         product.setStock(productData.getStock());
-        product.setQuantity(productData.getQuantity());
         return product;
     }
 }

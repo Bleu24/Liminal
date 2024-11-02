@@ -4,12 +4,15 @@ package com.gabriel.emplms.serviceimpl;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.gabriel.emplms.entity.CartData;
@@ -30,23 +33,26 @@ public class CartServiceImpl implements CartService{
     @Autowired
     private CartDataRepository cartDataRepository;
 
+    private String getLoggedInUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName(); // Gets the username from the security context
+    }
+
      // Get all items in the cart
     @Override
-    public List<CartData> getAllCartItems() {
-        List<CartData> cartItems = new ArrayList<>();
-        cartDataRepository.findAll().forEach(cartItems::add);
-        return cartItems;
+    public List<CartData> getAllCartItems(String username) {
+        return cartDataRepository.findByUsername(username);
     }
 
     @Transactional
     @Override
-    public CartData updateCartItem(int productId, int newQuantity) {
+    public CartData updateCartItem(String username, int productId, int newQuantity) {
         // Fetch the product details from the product_data table
         ProductData productData = productDataRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
 
         // Find the existing cart item by productId
-        CartData cartItem = cartDataRepository.findByProductId(productId);
+        CartData cartItem = cartDataRepository.findByUsernameAndProductId(username, productId);
         if (cartItem == null) {
             throw new RuntimeException("Cart item not found with Product ID: " + productId);
         }
@@ -82,7 +88,7 @@ public class CartServiceImpl implements CartService{
       // Remove an item from the cart
       @Override
       @Transactional
-      public void removeCartItem(int id) {
+      public void removeCartItem(String username, int id) {
           CartData cartItem = cartDataRepository.findById(id)
                   .orElseThrow(() -> new RuntimeException("Cart item not found with ID: " + id));
       
@@ -104,7 +110,7 @@ public class CartServiceImpl implements CartService{
 
     @Transactional
     @Override
-    public CartData addToCart(int productId, int quantity) {
+    public CartData addToCart(String username, int productId, int quantity) {
         // Fetch the product details from product_data table
         ProductData productData = productDataRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
@@ -116,7 +122,7 @@ public class CartServiceImpl implements CartService{
         }
     
         // Find the cart item by productId
-        CartData cartItem = cartDataRepository.findByProductId(productId);
+        CartData cartItem = cartDataRepository.findByUsernameAndProductId(username, productId);
         
         if (cartItem != null) {
             // Product exists in the cart, update quantity and total price
@@ -126,6 +132,7 @@ public class CartServiceImpl implements CartService{
             // Product does not exist in the cart, create a new cart item
             cartItem = new CartData();
             cartItem.setProductId(productData.getId());
+            cartItem.setUsername(getLoggedInUsername());
             cartItem.setName(productData.getName());
             cartItem.setDescription(productData.getDescription());
             cartItem.setPricePerItem(productData.getPricePerItem());
@@ -143,9 +150,14 @@ public class CartServiceImpl implements CartService{
         return cartItem;
     }
 
+    @Override
+    public void saveCartItems(String username) {
+        // Fetch all cart items for the user from the database
+        List<CartData> cartItems = cartDataRepository.findByUsername(username);
 
-
-
+        // Save all cart items for the user
+        cartDataRepository.saveAll(cartItems);
+    }
 }
 
 

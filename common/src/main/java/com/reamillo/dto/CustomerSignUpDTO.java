@@ -12,6 +12,9 @@ public class CustomerSignUpDTO {
     @NotEmpty
     private String email;
 
+    @Size(min = 4, message = "Username should have at least 4 characters")
+    private String username;
+
     @Size(min = 6, message = "Password should have at least 6 characters")
     private String password;
 

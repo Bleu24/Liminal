@@ -1,16 +1,12 @@
 package com.gabriel.emplms.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.validation.Valid;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,18 +18,28 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gabriel.emplms.entity.CustomerData;
 import com.gabriel.emplms.model.Customer;
 import com.gabriel.emplms.service.CustomerService;
-import com.reamillo.dto.CustomerLoginDTO;
-import com.reamillo.dto.CustomerSignUpDTO;
 
 
 @RestController
 public class CustomerController {
     Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
 
-    @Autowired
-    private CustomerService customerService;
+    private final CustomerService customerService;
 
+    @GetMapping("/api/customer/me")
+    public ResponseEntity<CustomerData> authenticatedUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        CustomerData currentUser = (CustomerData) authentication.getPrincipal();
+
+        return ResponseEntity.ok(currentUser);
+    }
+
+    
     @GetMapping("/api/customer")
     public ResponseEntity<?> listCustomer() {
         HttpHeaders headers = new HttpHeaders();
@@ -106,21 +112,21 @@ public class CustomerController {
         return response;
     }
 
-    @PostMapping("/api/register")
-    public ResponseEntity<?> registerCustomer(@RequestBody CustomerSignUpDTO customerSignUpDTO) {
-        logger.info("Register Input >> " + customerSignUpDTO.toString());
-        HttpHeaders headers = new HttpHeaders();
-        ResponseEntity<?> response;
-        try {
-            // Call the service to register the customer
-            CustomerData newCustomer = customerService.register(customerSignUpDTO);
-            response = ResponseEntity.ok(newCustomer);
-        } catch (Exception ex) {
-            logger.error("Failed to register customer: {}", ex.getMessage(), ex);
-            response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
-        }
-        return response;
-    }
+    // @PostMapping("/api/register")
+    // public ResponseEntity<?> registerCustomer(@RequestBody CustomerSignUpDTO customerSignUpDTO) {
+    //     logger.info("Register Input >> " + customerSignUpDTO.toString());
+    //     HttpHeaders headers = new HttpHeaders();
+    //     ResponseEntity<?> response;
+    //     try {
+    //         // Call the service to register the customer
+    //         CustomerData newCustomer = customerService.register(customerSignUpDTO);
+    //         response = ResponseEntity.ok(newCustomer);
+    //     } catch (Exception ex) {
+    //         logger.error("Failed to register customer: {}", ex.getMessage(), ex);
+    //         response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+    //     }
+    //     return response;
+    // }
 
     // @PostMapping("/api/login")
     // public ResponseEntity<?> loginCustomer(@Valid @RequestBody CustomerLoginDTO customerLoginDTO) {
