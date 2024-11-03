@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gabriel.emplms.entity.OrderData;
 import com.gabriel.emplms.model.Order;
 import com.gabriel.emplms.service.OrderService;
+
+
 
 @RestController
 @RequestMapping("/api/orders")
@@ -63,25 +64,6 @@ public class OrderController {
         String username = getLoggedInUsername();
         List<OrderData> orders = orderService.getAllOrders(username);
         return ResponseEntity.ok(orders);
-    }
-
-    @PutMapping("/update")
-    public ResponseEntity<?> updateOrderItem(@RequestBody Order order) {
-        String username = getLoggedInUsername();
-        logger.info("Input >> " + order.toString());
-        HttpHeaders headers = new HttpHeaders();
-        ResponseEntity<?> response;
-    
-        try {
-            OrderData updatedItem = orderService.updateOrderItem(username, order.getProductId(), order.getQuantity());
-            logger.info("Updated order item >> " + updatedItem.toString());
-            response = ResponseEntity.ok(updatedItem);
-        } catch (Exception ex) {
-            logger.error("Failed to update order item: {}", ex.getMessage(), ex);
-            response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
-        }
-    
-        return response;
     }
 
     @DeleteMapping("/remove/{id}")
