@@ -9,7 +9,6 @@ public interface OrderService {
 
     List<OrderData> getAllOrders(String username);
 
-    OrderData updateOrderItem(String username, int productId, int quantity);
 
     void removeOrderItem(String username, int id);
 

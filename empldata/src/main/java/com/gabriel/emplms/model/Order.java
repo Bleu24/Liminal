@@ -1,7 +1,8 @@
 package com.gabriel.emplms.model;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.time.LocalDateTime;
+
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,10 +13,11 @@ public class Order {
 
     private int id;
     private String name;
-    private List<Cart> orderItems;
-    private int productId;
+    
     private String username;
+    private int productId;
+    private int quantity;
     private BigDecimal pricePerItem;
+    private LocalDateTime orderDate;
     private BigDecimal totalPrice;
-    private int quantity;  
 }
