@@ -14,8 +14,9 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
         </processorPath>
-        <module name="common" />
+        <module name="proddata" />
         <module name="sbemplms" />
         <module name="empldata" />
       </profile>
@@ -23,9 +24,9 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="common" options="-parameters" />
       <module name="empldata" options="-parameters" />
       <module name="liminal" options="-parameters" />
+      <module name="proddata" options="-parameters" />
       <module name="sbemplms" options="-parameters" />
     </option>
   </component>
