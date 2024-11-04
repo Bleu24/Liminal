@@ -31,10 +31,10 @@ FROM eclipse-temurin:20-jre-jammy AS final
 WORKDIR /app
 
 # Copy the built JAR of the main module you want to run
-COPY --from=build /build/sbemplms/target/sbemplms.jar app.jar
+COPY --from=build /build/sbemplms/target/sbemplms-1.0-SNAPSHOT.jar sbemplms-1.0-SNAPSHOT.jar
 
 # Expose the application port (adjust as needed)
 EXPOSE 8080
 
 # Run the main module
-CMD ["java", "-jar", "sbemplms.jar"]
+CMD ["java", "-jar", "sbemplms-1.0-SNAPSHOT.jar"]
