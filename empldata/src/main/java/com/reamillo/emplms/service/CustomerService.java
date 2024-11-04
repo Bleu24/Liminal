@@ -1,7 +1,7 @@
-package com.gabriel.emplms.service;
+package com.reamillo.emplms.service;
 
-import com.gabriel.emplms.entity.CustomerData;
-import com.gabriel.emplms.model.Customer;
+import com.reamillo.emplms.entity.CustomerData;
+import com.reamillo.emplms.model.Customer;
 import com.reamillo.dto.CustomerLoginDTO;
 import com.reamillo.dto.CustomerSignUpDTO;
 

@@ -1,4 +1,4 @@
-package com.gabriel.emplms.model;
+package com.reamillo.emplms.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

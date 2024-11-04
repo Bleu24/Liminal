@@ -1,14 +1,14 @@
-package com.gabriel.emplms.controller;
+package com.reamillo.emplms.controller;
 
+import com.reamillo.emplms.entity.CustomerData;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gabriel.emplms.entity.CustomerData;
-import com.gabriel.emplms.serviceimpl.AuthenticationService;
-import com.gabriel.emplms.serviceimpl.JwtService;
+import com.reamillo.emplms.serviceimpl.AuthenticationService;
+import com.reamillo.emplms.serviceimpl.JwtService;
 import com.reamillo.dto.CustomerLoginDTO;
 import com.reamillo.dto.CustomerSignUpDTO;
 import com.reamillo.dto.LoginResponse;

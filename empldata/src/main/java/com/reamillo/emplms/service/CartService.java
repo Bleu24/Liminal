@@ -1,8 +1,8 @@
-package com.gabriel.emplms.service;
+package com.reamillo.emplms.service;
 
 import java.util.List;
 
-import com.gabriel.emplms.entity.CartData;
+import com.reamillo.emplms.entity.CartData;
 
 public interface CartService {
      public CartData addToCart(String username, int productId, int quantity);

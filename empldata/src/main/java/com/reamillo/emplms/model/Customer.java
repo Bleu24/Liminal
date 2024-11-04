@@ -1,4 +1,4 @@
-package com.gabriel.emplms.model;
+package com.reamillo.emplms.model;
 import java.util.Date;
 
 import lombok.Data;

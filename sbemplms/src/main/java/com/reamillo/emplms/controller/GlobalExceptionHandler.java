@@ -1,4 +1,4 @@
-package com.gabriel.emplms.controller;
+package com.reamillo.emplms.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

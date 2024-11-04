@@ -1,4 +1,4 @@
-package com.gabriel.emplms.entity;
+package com.reamillo.emplms.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;

@@ -1,13 +1,16 @@
-package com.gabriel.emplms.serviceimpl;
+package com.reamillo.emplms.serviceimpl;
 
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import com.reamillo.emplms.entity.CartData;
+import com.reamillo.emplms.entity.ProductData;
+import com.reamillo.emplms.repository.CartDataRepository;
+import com.reamillo.emplms.repository.ProductDataRepository;
+import com.reamillo.emplms.service.CartService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +18,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.gabriel.emplms.entity.CartData;
-import com.gabriel.emplms.entity.ProductData;
-import com.gabriel.emplms.repository.CartDataRepository;
-import com.gabriel.emplms.repository.ProductDataRepository;
-import com.gabriel.emplms.service.CartService;
-
 
 @Service
-public class CartServiceImpl implements CartService{
+public class CartServiceImpl implements CartService {
 
     Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
 

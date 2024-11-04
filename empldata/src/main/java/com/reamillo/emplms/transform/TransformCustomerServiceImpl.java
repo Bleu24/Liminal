@@ -1,11 +1,11 @@
-package com.gabriel.emplms.transform;
+package com.reamillo.emplms.transform;
 
+import com.reamillo.emplms.entity.CustomerData;
+import com.reamillo.emplms.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.gabriel.emplms.entity.CustomerData;
-import com.gabriel.emplms.model.Customer;
 import com.reamillo.dto.CustomerSignUpDTO;
 
 @Service

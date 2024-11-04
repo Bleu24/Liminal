@@ -1,5 +1,7 @@
-package com.gabriel.emplms.controller;
+package com.reamillo.emplms.controller;
 
+import com.reamillo.emplms.model.Product;
+import com.reamillo.emplms.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.gabriel.emplms.model.Product;
-import com.gabriel.emplms.service.ProductService;
-
 
 
 @RestController

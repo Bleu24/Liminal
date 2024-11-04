@@ -1,7 +1,8 @@
-package com.gabriel.emplms.controller;
+package com.reamillo.emplms.controller;
 
 import java.util.List;
 
+import com.reamillo.emplms.service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gabriel.emplms.entity.OrderData;
-import com.gabriel.emplms.model.Order;
-import com.gabriel.emplms.service.OrderService;
-
+import com.reamillo.emplms.entity.OrderData;
+import com.reamillo.emplms.model.Order;
 
 
 @RestController

@@ -1,6 +1,6 @@
-package com.gabriel.emplms.service;
+package com.reamillo.emplms.service;
 
-import com.gabriel.emplms.model.Product;
+import com.reamillo.emplms.model.Product;
 
 public interface ProductService {
 	Product[] getAll() throws Exception;

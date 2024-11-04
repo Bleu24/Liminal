@@ -1,4 +1,4 @@
-package com.gabriel.emplms.config;
+package com.reamillo.emplms.config;
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
-import com.gabriel.emplms.serviceimpl.JwtService;
+import com.reamillo.emplms.serviceimpl.JwtService;
 
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {

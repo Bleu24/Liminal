@@ -1,8 +1,7 @@
-package com.gabriel.emplms.config;
+package com.reamillo.emplms.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -11,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.gabriel.emplms.repository.CustomerDataRepository;
+import com.reamillo.emplms.repository.CustomerDataRepository;
 // import com.reamillo.config.SecurityConfig;
 
 // @Import(SecurityConfig.class)

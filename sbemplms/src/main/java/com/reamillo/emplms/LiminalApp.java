@@ -1,10 +1,9 @@
-package com.gabriel.emplms;
+package com.reamillo.emplms;
 
+import com.reamillo.emplms.config.JwtSecurityConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
-
-import com.gabriel.emplms.config.JwtSecurityConfig;
 // import com.reamillo.config.SecurityConfig;
 
 @SpringBootApplication

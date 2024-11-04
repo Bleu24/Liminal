@@ -1,5 +1,8 @@
-package com.gabriel.emplms.controller;
+package com.reamillo.emplms.controller;
 
+import com.reamillo.emplms.entity.CustomerData;
+import com.reamillo.emplms.model.Customer;
+import com.reamillo.emplms.service.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -14,10 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.gabriel.emplms.entity.CustomerData;
-import com.gabriel.emplms.model.Customer;
-import com.gabriel.emplms.service.CustomerService;
 
 
 @RestController

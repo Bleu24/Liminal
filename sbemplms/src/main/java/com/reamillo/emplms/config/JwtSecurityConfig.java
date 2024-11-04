@@ -1,4 +1,4 @@
-package com.gabriel.emplms.config;
+package com.reamillo.emplms.config;
 
 import java.util.Arrays;
 

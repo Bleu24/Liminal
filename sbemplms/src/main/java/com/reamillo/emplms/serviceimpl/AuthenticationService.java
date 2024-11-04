@@ -1,6 +1,7 @@
-package com.gabriel.emplms.serviceimpl;
+package com.reamillo.emplms.serviceimpl;
 
 
+import com.reamillo.emplms.entity.CustomerData;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -9,8 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-import com.gabriel.emplms.entity.CustomerData;
-import com.gabriel.emplms.repository.CustomerDataRepository;
+import com.reamillo.emplms.repository.CustomerDataRepository;
 import com.reamillo.dto.CustomerLoginDTO;
 import com.reamillo.dto.CustomerSignUpDTO;
 

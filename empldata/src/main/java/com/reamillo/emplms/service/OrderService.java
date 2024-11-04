@@ -1,8 +1,8 @@
-package com.gabriel.emplms.service;
+package com.reamillo.emplms.service;
 
 import java.util.List;
 
-import com.gabriel.emplms.entity.OrderData;
+import com.reamillo.emplms.entity.OrderData;
 
 public interface OrderService {
     OrderData addToOrder(String username, int productId, int quantity);

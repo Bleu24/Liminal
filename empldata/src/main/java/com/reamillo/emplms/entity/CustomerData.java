@@ -1,4 +1,4 @@
-package com.gabriel.emplms.entity;
+package com.reamillo.emplms.entity;
 
 import java.util.Collection;
 import java.util.Date;

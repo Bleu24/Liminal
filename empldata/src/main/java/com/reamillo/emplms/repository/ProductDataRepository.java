@@ -1,5 +1,5 @@
-package com.gabriel.emplms.repository;
+package com.reamillo.emplms.repository;
+import com.reamillo.emplms.entity.ProductData;
 import org.springframework.data.repository.CrudRepository;
 
-import com.gabriel.emplms.entity.ProductData;
 public interface ProductDataRepository extends CrudRepository<ProductData,Integer> {}

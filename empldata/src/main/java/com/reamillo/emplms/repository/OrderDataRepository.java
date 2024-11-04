@@ -1,11 +1,10 @@
-package com.gabriel.emplms.repository;
+package com.reamillo.emplms.repository;
 
 import java.util.List;
 
+import com.reamillo.emplms.entity.OrderData;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
-import com.gabriel.emplms.entity.OrderData;
 
 @Repository
 public interface OrderDataRepository extends CrudRepository<OrderData, Integer> {

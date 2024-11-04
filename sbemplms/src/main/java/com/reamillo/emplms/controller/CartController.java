@@ -1,7 +1,10 @@
-package com.gabriel.emplms.controller;
+package com.reamillo.emplms.controller;
 
 import java.util.List;
 
+import com.reamillo.emplms.entity.CartData;
+import com.reamillo.emplms.model.Cart;
+import com.reamillo.emplms.service.CartService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +21,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.gabriel.emplms.entity.CartData;
-import com.gabriel.emplms.model.Cart;
-import com.gabriel.emplms.service.CartService;
 
 
 @RestController

@@ -1,4 +1,4 @@
-package com.gabriel.emplms.controller;
+package com.reamillo.emplms.controller;
 
 public class Errors {
     private int status;
